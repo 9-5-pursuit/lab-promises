@@ -12,9 +12,7 @@ const finder = require("./helpers/finder");
  */
 function logResult(obj) {
 
-
-    finder(obj['first'], obj['last']).then(item => console.log(item)).catch(item => console.log(item))
-
+  finder(obj['first'], obj['last']).then(item => console.log(item)).catch(item => console.log(item))
 }
 
 /**
@@ -31,7 +29,6 @@ function logTwoResults(obj, obj2) {
 
   finder(obj['first'], obj['last']).then(item => console.log(item)).catch(item => console.log(item))
   finder(obj2['first'], obj2['last']).then(item => console.log(item)).catch(item => console.log(item))
-
 }
 
 /**
@@ -47,11 +44,10 @@ function logTwoResults(obj, obj2) {
  */
 function logThreeResultsCities(obj, obj2, obj3) {
 
-  [obj, obj2, obj3].forEach(item => 
-    finder(item['first'], item['last']).then(item => console.log(item['city'])).catch(item => console.log(item))
-    
-    )
-  
+  [obj, obj2, obj3].forEach(item =>
+    finder(item['first'], item['last']).then(item => console.log(item[0]['city'])).catch(item => console.log(item))
+  )
+
 
 
 }
