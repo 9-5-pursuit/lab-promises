@@ -11,13 +11,15 @@ const finder = require("./helpers/finder");
  * @param {Object} person.last - The person's last name.
  */
 function logResult(person) {
-  finder(person.first, person.last)
-  .then((object) => {
-    console.log(object)
-  })
-  .catch((error) => {
-    console.log(error)
-  })
+  // finder(person.first, person.last)
+  // .then((object) => {
+  //   console.log(object)
+  // })
+  // .catch((error) => {
+  //   console.log(error)
+  // })
+
+  logThreeResultsCities(person)
 }
 
 /**
@@ -31,17 +33,17 @@ function logResult(person) {
  * @param {Object} person2 - A person's names. In the same format as person1.
  */
 function logTwoResults(person1, person2) {
-  const personArray = [person1, person2]
+  // for (const person of arguments) {
+  //   finder(person.first, person.last)
+  //   .then((object) => {
+  //     console.log(object)
+  //   })
+  //   .catch((error) => {
+  //     console.log(error)
+  //   })
+  // }
 
-  for (const person of personArray) {
-    finder(person.first, person.last)
-    .then((object) => {
-      console.log(object)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
+  logThreeResultsCities(person1, person2)
 }
 
 /**
@@ -56,11 +58,10 @@ function logTwoResults(person1, person2) {
  * @param {Object} person3 - A person's names. In the same format as person1.
  */
 function logThreeResultsCities(person1, person2, person3) {
-  const personArray = [person1, person2, person3]
-
-  for (const person of personArray) {
+  for (const person of arguments) {
     finder(person.first, person.last)
     .then((object) => {
+      console.log(object)
       console.log(object[0]["city"])
     })
     .catch((error) => {
