@@ -61,7 +61,6 @@ function logThreeResultsCities(person1, person2, person3) {
   for (const person of personArray) {
     finder(person.first, person.last)
     .then((object) => {
-      // let personObj = 
       console.log(object[0]["city"])
     })
     .catch((error) => {
