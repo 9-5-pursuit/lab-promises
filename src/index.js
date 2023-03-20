@@ -25,7 +25,7 @@ function logResult(obj) {
  * @param {Object} person1.last - The person's last name.
  * @param {Object} person2 - A person's names. In the same format as person1.
  */
-function logTwoResults(obj, obj2) {
+function logTwoResults() {
 
   [...arguments].forEach(item => finder(item['first'], item['last']).then(item => console.log(item)).catch(item => console.log(item)))
 }
