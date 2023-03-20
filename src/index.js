@@ -35,7 +35,7 @@ function logTwoResults(data1, data2) {
       { first: "Tyler", last: "Yates" },
       { first: "Yvette", last: "Glenn" }
 
-      argumments 
+      arguments 
       [
         { first: "Tyler", last: "Yates" },
         { first: "Yvette", last: "Glenn" }
@@ -76,22 +76,11 @@ function logTwoResults(data1, data2) {
  * @param {Object} person2 - A person's names. In the same format as person1.
  * @param {Object} person3 - A person's names. In the same format as person1.
  */
-// function logThreeResultsCities(data1, data2, data3) {
-//   for (let i = 0; i < arguments.length; i++) {
-//     finder(arguments[i].first, arguments[i].last, arguments[i].city)
-//       .then((result) => {
-//         console.log(arguments[i].city);
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   }
-// }
-
 function logThreeResultsCities(...data) {
   data.forEach((item) => {
     finder(item.first, item.last)
       .then((result) => {
+        //...returning just the city from each person.
         result.forEach((item) => {
           console.log(item.city);
         });
