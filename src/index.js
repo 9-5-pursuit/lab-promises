@@ -27,8 +27,7 @@ function logResult(obj) {
  */
 function logTwoResults(obj, obj2) {
 
-  finder(obj['first'], obj['last']).then(item => console.log(item)).catch(item => console.log(item))
-  finder(obj2['first'], obj2['last']).then(item => console.log(item)).catch(item => console.log(item))
+  [...arguments].forEach(item => finder(item['first'], item['last']).then(item => console.log(item)).catch(item => console.log(item)))
 }
 
 /**
@@ -47,9 +46,6 @@ function logThreeResultsCities(obj, obj2, obj3) {
   [obj, obj2, obj3].forEach(item =>
     finder(item['first'], item['last']).then(item => console.log(item[0]['city'])).catch(item => console.log(item))
   )
-
-
-
 }
 
 // Do not change any of the code below this line.
