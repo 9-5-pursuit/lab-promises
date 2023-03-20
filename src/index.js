@@ -11,17 +11,13 @@ const finder = require("./helpers/finder");
  * @param {Object} person.last - The person's last name.
  */
 function logResult(person) {
-  if (!(person.first && person.last)) {
-    console.log("First and Last name are required to search.")
-  } else {
-    finder(person.first, person.last)
-    .then((object) => {
-      console.log(object)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
+  finder(person.first, person.last)
+  .then((object) => {
+    console.log(object)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
 }
 
 /**
@@ -38,17 +34,13 @@ function logTwoResults(person1, person2) {
   const personArray = [person1, person2]
 
   for (const person of personArray) {
-    if (!(person.first && person.last)) {
-      console.log("First and Last name are required to search.")
-    } else {
-      finder(person.first, person.last)
-      .then((object) => {
-        console.log(object)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-    }
+    finder(person.first, person.last)
+    .then((object) => {
+      console.log(object)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 }
 
@@ -67,18 +59,14 @@ function logThreeResultsCities(person1, person2, person3) {
   const personArray = [person1, person2, person3]
 
   for (const person of personArray) {
-    if (!(person.first && person.last)) {
-      console.log("First and Last name are required to search.")
-    } else {
-      finder(person.first, person.last)
-      .then((object) => {
-        let personObj = object[0]
-        console.log(personObj["city"])
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-    }
+    finder(person.first, person.last)
+    .then((object) => {
+      let personObj = object[0]
+      console.log(personObj["city"])
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 }
 
