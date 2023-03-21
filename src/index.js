@@ -10,7 +10,18 @@ const finder = require("./helpers/finder");
  * @param {Object} person.first - The person's first name.
  * @param {Object} person.last - The person's last name.
  */
-function logResult() {}
+function logResult(data) {
+  /*
+  { first: "Ora", last: "Valentine"}
+  */
+  finder(data.first, data.last)
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
 
 /**
  * logTwoResults()
@@ -22,7 +33,35 @@ function logResult() {}
  * @param {Object} person1.last - The person's last name.
  * @param {Object} person2 - A person's names. In the same format as person1.
  */
-function logTwoResults() {}
+function logTwoResults(data1, data2) {
+  /*
+  { first: "Tyler", last: "Yates"}
+  { first: "Yvette", last: "Glen"}
+  */
+
+  //argument - for loop
+  for(let argument of arguments) {
+    finder(argument.first, argument.last)
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  //other solution uses ...data as the argument
+  // can use foreach, filter, map
+  // data.forEach((item) => {
+  //   finder(item.first, item.last)
+  //   .then((result) => {
+  //     console.log(result);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  // });
+}
 
 /**
  * logThreeResultsCities()
@@ -35,7 +74,24 @@ function logTwoResults() {}
  * @param {Object} person2 - A person's names. In the same format as person1.
  * @param {Object} person3 - A person's names. In the same format as person1.
  */
-function logThreeResultsCities() {}
+function logThreeResultsCities(...data) {
+  /*
+  { city: "Utah", first: "Tyler", last: "Yates"}
+  { city: "New York", first: "Yvette", last: "Glen"}
+  { city: "Maryland", first: "Adam", last: "Banks"}
+  */
+  data.forEach((item) => {
+    finder(item.first, item.last)
+    .then((result) => {
+      result.forEach((item) => {
+        console.log(item.city)
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  });
+}
 
 // Do not change any of the code below this line.
 module.exports = {
