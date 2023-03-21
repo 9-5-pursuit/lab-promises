@@ -10,7 +10,15 @@ const finder = require("./helpers/finder");
  * @param {Object} person.first - The person's first name.
  * @param {Object} person.last - The person's last name.
  */
-function logResult() {}
+function logResult(person) {
+  finder(person.first, person.last)
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
 /**
  * logTwoResults()
@@ -22,8 +30,24 @@ function logResult() {}
  * @param {Object} person1.last - The person's last name.
  * @param {Object} person2 - A person's names. In the same format as person1.
  */
-function logTwoResults() {}
-
+function logTwoResults(person1, person2) {
+  for (let i = 0; i < arguments.length; i++) {
+    finder(arguments[i].first, arguments[i].last)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // finder(person2.first, person2.last)
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  }
+}
 /**
  * logThreeResultsCities()
  * ========================
@@ -35,8 +59,43 @@ function logTwoResults() {}
  * @param {Object} person2 - A person's names. In the same format as person1.
  * @param {Object} person3 - A person's names. In the same format as person1.
  */
-function logThreeResultsCities() {}
 
+function logThreeResultsCities(...data) {
+  /*
+  [
+    { first: "Joyce", last: "Wilkins" }, 
+    { first: "Marshall", last: "Short" }, 
+    { first: "Janet", last: "Evans" } 
+  ]
+
+  */
+  data.forEach((item) => {
+    finder(item.first, item.last)
+      .then((result) => {
+        /*
+          [ { last: 'Wilkins', first: 'Joyce', city: 'Kohatk', age: 30 } ]
+          [ { last: 'Short', first: 'Marshall', city: 'Soham', age: 26 } ]
+          [ { last: 'Evans', first: 'Janet', city: 'Lafferty', age: 61 } ]
+        */
+        console.log(result[0].city);
+        // result.forEach((item) => {
+        //   console.log(item.city);
+        // });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+}
+// for (let i = 0; i < arguments.length; i++) {
+//   finder(arguments[i].first, arguments[i].last)
+//     .then((result) => {
+//       console.log(person.city);
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// }
 // Do not change any of the code below this line.
 module.exports = {
   logResult,
