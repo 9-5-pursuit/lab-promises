@@ -10,7 +10,16 @@ const finder = require("./helpers/finder");
  * @param {Object} person.first - The person's first name.
  * @param {Object} person.last - The person's last name.
  */
-function logResult() {}
+function logResult(person) {
+  // finder(person.first, person.last)
+  //   .then((result) => {
+  //     console.log(result);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  allInOne(person);
+}
 
 /**
  * logTwoResults()
@@ -22,7 +31,18 @@ function logResult() {}
  * @param {Object} person1.last - The person's last name.
  * @param {Object} person2 - A person's names. In the same format as person1.
  */
-function logTwoResults() {}
+function logTwoResults(person1, person2) {
+  // for (const argument of arguments) {
+  //   finder(argument.first, argument.last)
+  //     .then((result) => {
+  //       console.log(result);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+  allInOne(person1, person2);
+}
 
 /**
  * logThreeResultsCities()
@@ -35,8 +55,37 @@ function logTwoResults() {}
  * @param {Object} person2 - A person's names. In the same format as person1.
  * @param {Object} person3 - A person's names. In the same format as person1.
  */
-function logThreeResultsCities() {}
-
+function logThreeResultsCities(person1, person2, person3) {
+  // for (const argument of arguments) {
+  //   // finder(argument.first, argument.last)
+  //   //   .then((result) => {
+  //   //     // for (const item of result) {
+  //   //     //   console.log(item.city);
+  //   //     // }
+  //   //     console.log(result[0].city);
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.log(error);
+  //   //   });
+  // }
+  allInOne(person1, person2, person3);
+}
+// Tried making one function that passes all the tests
+function allInOne() {
+  for (const argument of arguments) {
+    finder(argument.first, argument.last)
+      .then((result) => {
+        if (arguments.length === 3) {
+          console.log(result[0].city);
+        } else {
+          console.log(result);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+}
 // Do not change any of the code below this line.
 module.exports = {
   logResult,
