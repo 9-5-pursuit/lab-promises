@@ -21,7 +21,7 @@ describe("logResult()", () => {
 
   it("should log the validation error when names are not given", async () => {
     await logResult({ first: "Ora" });
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve,300 ));
 
     expect(console.log).toHaveBeenCalledWith(
       "First and Last name are required to search."
